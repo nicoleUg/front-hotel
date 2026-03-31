@@ -5,7 +5,6 @@ export default function Huespedes() {
   const [huespedes, setHuespedes] = useState<any[]>([]);
   const [cargando, setCargando] = useState(true);
 
-  // Estado para el formulario
   const [formulario, setFormulario] = useState({
     tipoDocumento: 'CI',
     numeroDocumento: '',
@@ -14,7 +13,6 @@ export default function Huespedes() {
     correo: ''
   });
 
-  // Cargar huéspedes desde tu backend
   const cargarHuespedes = async () => {
     try {
       const res = await fetch('http://localhost:3000/huespedes');
@@ -31,7 +29,6 @@ export default function Huespedes() {
     cargarHuespedes();
   }, []);
 
-  // Manejar el envío del formulario
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {

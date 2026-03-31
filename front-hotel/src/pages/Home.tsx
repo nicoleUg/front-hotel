@@ -12,7 +12,6 @@ export default function Home() {
   useEffect(() => {
     const cargarEstadisticas = async () => {
       try {
-        // Hacemos las dos peticiones al backend al mismo tiempo
         const [resReservas, resHuespedes] = await Promise.all([
           fetch('http://localhost:3000/reservas'),
           fetch('http://localhost:3000/huespedes')
@@ -21,7 +20,6 @@ export default function Home() {
         const reservas = await resReservas.json();
         const huespedes = await resHuespedes.json();
 
-        // Calculamos los números usando funciones de arreglos
         const activas = reservas.filter((r: any) => r.estado === 'Confirmada').length;
         const enCurso = reservas.filter((r: any) => r.estado === 'Check In').length;
         

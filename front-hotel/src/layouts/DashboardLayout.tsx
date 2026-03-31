@@ -1,10 +1,9 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Home, Users, Calendar, PhoneCall, LogOut } from 'lucide-react';
+import { Home, Users, Calendar, PhoneCall } from 'lucide-react';
 
 export default function DashboardLayout() {
   
-  // Función auxiliar inteligente: React Router le pasará "isActive" como true 
-  // cuando la URL coincida con el botón.
+  // Función auxiliar inteligente para pintar la pestaña activa
   const clasesPestana = ({ isActive }: { isActive: boolean }) => 
     `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
       isActive 
@@ -18,14 +17,11 @@ export default function DashboardLayout() {
       {/* Sidebar (Menú Lateral) */}
       <aside className="w-64 bg-hotel-900 text-white flex flex-col">
         <div className="p-6">
-          {/* CORRECCIÓN 1: Título actualizado solo a HOTEL */}
           <h1 className="text-2xl font-bold tracking-wider">HOTEL</h1>
           <p className="text-sm text-gray-400 mt-1">Recepción</p>
         </div>
 
         <nav className="flex-1 px-4 space-y-2 mt-4">
-          {/* CORRECCIÓN 2: Uso de NavLink con clases dinámicas */}
-          {/* Usamos 'end' en Inicio para que no se pinte en todas las rutas */}
           <NavLink to="/" end className={clasesPestana}>
             <Home size={20} /> Inicio
           </NavLink>
@@ -42,12 +38,6 @@ export default function DashboardLayout() {
             <PhoneCall size={20} /> Servicios
           </NavLink>
         </nav>
-
-        <div className="p-4 border-t border-gray-700">
-          <button className="flex items-center gap-3 px-4 py-2 w-full text-left text-gray-400 hover:text-white transition-colors">
-            <LogOut size={20} /> Salir
-          </button>
-        </div>
       </aside>
 
       {/* Área Principal de Contenido */}

@@ -1,34 +1,53 @@
-import { Link, Outlet } from 'react-router-dom';
-import { Home, Users, Calendar, PhoneCall } from 'lucide-react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { Home, Users, Calendar, PhoneCall, LogOut } from 'lucide-react';
 
 export default function DashboardLayout() {
+  
+  // Función auxiliar inteligente: React Router le pasará "isActive" como true 
+  // cuando la URL coincida con el botón.
+  const clasesPestana = ({ isActive }: { isActive: boolean }) => 
+    `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+      isActive 
+        ? 'bg-hotel-800 text-hotel-accent font-medium' 
+        : 'text-gray-300 hover:bg-hotel-800 hover:text-white'
+    }`;
+
   return (
     <div className="flex h-screen bg-gray-100 font-sans">
       
       {/* Sidebar (Menú Lateral) */}
       <aside className="w-64 bg-hotel-900 text-white flex flex-col">
         <div className="p-6">
-          <h1 className="text-2xl font-bold tracking-wider">HOTEL<span className="text-hotel-accent">SYS</span></h1>
+          {/* CORRECCIÓN 1: Título actualizado solo a HOTEL */}
+          <h1 className="text-2xl font-bold tracking-wider">HOTEL</h1>
           <p className="text-sm text-gray-400 mt-1">Recepción</p>
         </div>
 
         <nav className="flex-1 px-4 space-y-2 mt-4">
-          <Link to="/" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-hotel-800 transition-colors">
+          {/* CORRECCIÓN 2: Uso de NavLink con clases dinámicas */}
+          {/* Usamos 'end' en Inicio para que no se pinte en todas las rutas */}
+          <NavLink to="/" end className={clasesPestana}>
             <Home size={20} /> Inicio
-          </Link>
-          <Link to="/huespedes" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-hotel-800 transition-colors">
+          </NavLink>
+          
+          <NavLink to="/huespedes" className={clasesPestana}>
             <Users size={20} /> Huéspedes
-          </Link>
-          <Link to="/reservas" className="flex items-center gap-3 px-4 py-3 rounded-lg bg-hotel-800 text-hotel-accent font-medium transition-colors">
+          </NavLink>
+          
+          <NavLink to="/reservas" className={clasesPestana}>
             <Calendar size={20} /> Reservas
-          </Link>
-          <Link to="/servicios" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-hotel-800 transition-colors">
+          </NavLink>
+          
+          <NavLink to="/servicios" className={clasesPestana}>
             <PhoneCall size={20} /> Servicios
-          </Link>
+          </NavLink>
         </nav>
 
-        
-
+        <div className="p-4 border-t border-gray-700">
+          <button className="flex items-center gap-3 px-4 py-2 w-full text-left text-gray-400 hover:text-white transition-colors">
+            <LogOut size={20} /> Salir
+          </button>
+        </div>
       </aside>
 
       {/* Área Principal de Contenido */}
@@ -44,7 +63,7 @@ export default function DashboardLayout() {
           </div>
         </header>
 
-        {/* Aquí se inyectarán tus páginas (HU-01 a HU-07) */}
+        {/* Aquí se inyectan tus páginas */}
         <div className="flex-1 overflow-auto p-8 bg-hotel-50">
           <Outlet /> 
         </div>

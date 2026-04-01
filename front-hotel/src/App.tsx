@@ -9,7 +9,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Todas las rutas dentro de este Route usarán el DashboardLayout */}
         <Route path="/" element={<DashboardLayout />}>
           <Route index element={<Home />} />
           <Route path="reservas" element={<Reservas />} />

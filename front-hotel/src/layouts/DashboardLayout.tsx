@@ -3,7 +3,6 @@ import { Home, Users, Calendar, PhoneCall } from 'lucide-react';
 
 export default function DashboardLayout() {
   
-  // Función auxiliar inteligente para pintar la pestaña activa
   const clasesPestana = ({ isActive }: { isActive: boolean }) => 
     `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
       isActive 
@@ -14,7 +13,6 @@ export default function DashboardLayout() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans">
       
-      {/* Sidebar (Menú Lateral) */}
       <aside className="w-64 bg-hotel-900 text-white flex flex-col">
         <div className="p-6">
           <h1 className="text-2xl font-bold tracking-wider">HOTEL</h1>
@@ -40,7 +38,6 @@ export default function DashboardLayout() {
         </nav>
       </aside>
 
-      {/* Área Principal de Contenido */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Cabecera superior */}
         <header className="h-16 bg-white border-b flex items-center justify-between px-8 shadow-sm">
@@ -53,7 +50,6 @@ export default function DashboardLayout() {
           </div>
         </header>
 
-        {/* Aquí se inyectan tus páginas */}
         <div className="flex-1 overflow-auto p-8 bg-hotel-50">
           <Outlet /> 
         </div>

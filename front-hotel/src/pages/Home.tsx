@@ -54,7 +54,6 @@ export default function Home() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Tarjeta 1: Reservas Confirmadas */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
             <div className="bg-blue-100 p-4 rounded-lg text-blue-600">
               <Calendar size={28} />
@@ -65,7 +64,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Tarjeta 2: Estadías en Curso */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
             <div className="bg-green-100 p-4 rounded-lg text-green-600">
               <CheckCircle size={28} />

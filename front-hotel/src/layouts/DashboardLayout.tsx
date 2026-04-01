@@ -24,15 +24,15 @@ export default function DashboardLayout() {
             <Home size={20} /> Inicio
           </NavLink>
           
-          <NavLink to="/huespedes" className={clasesPestana}>
+          <NavLink to="/huespedes" end className={clasesPestana}>
             <Users size={20} /> Huéspedes
           </NavLink>
           
-          <NavLink to="/reservas" className={clasesPestana}>
+          <NavLink to="/reservas" end className={clasesPestana}>
             <Calendar size={20} /> Reservas
           </NavLink>
           
-          <NavLink to="/servicios" className={clasesPestana}>
+          <NavLink to="/servicios" end className={clasesPestana}>
             <PhoneCall size={20} /> Servicios
           </NavLink>
         </nav>

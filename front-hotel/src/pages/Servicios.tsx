@@ -4,14 +4,19 @@ import { Phone, Loader2 } from 'lucide-react';
 export default function Servicios() {
   const [servicios, setServicios] = useState<any[]>([]);
   const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const cargarServicios = async () => {
       try {
-        const res = await fetch('http://localhost:3000/servicios');
+        const res = await fetch('http://localhost:3000/contacto-servicio');
+        if (!res.ok) {
+          throw new Error('Error al cargar los servicios');
+        }
         const data = await res.json();
         setServicios(data);
       } catch (error) {
+        setError((error as Error).message);
         console.error("Error al cargar servicios", error);
       } finally {
         setCargando(false);
@@ -31,6 +36,10 @@ export default function Servicios() {
         {cargando ? (
           <div className="flex justify-center items-center p-10 text-hotel-accent">
             <Loader2 className="animate-spin" size={32} />
+          </div>
+        ) : error ? (
+          <div className="p-10 text-center text-red-500">
+            Error: {error}
           </div>
         ) : (
           <table className="w-full text-left border-collapse">
